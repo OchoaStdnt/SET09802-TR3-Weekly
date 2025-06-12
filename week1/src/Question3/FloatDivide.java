@@ -9,7 +9,6 @@ public class FloatDivide {
 		double firstNum, secondNum, divideVal;
 		
 		String valueEntered, output;
-		//String output;
 		
 		//Prompt user for values and store in each int
 		valueEntered = JOptionPane.showInputDialog("please enter a number with decimal that will be divided");
