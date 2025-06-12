@@ -12,10 +12,10 @@ public class FloatDivide {
 		//String output;
 		
 		//Prompt user for values and store in each int
-		valueEntered = JOptionPane.showInputDialog("please enter a number that will be divided");
+		valueEntered = JOptionPane.showInputDialog("please enter a number with decimal that will be divided");
 		firstNum = Double.parseDouble(valueEntered);	//converts the entered number and stores in "firstNum"
 		
-		valueEntered = JOptionPane.showInputDialog("please enter second number to divide by");
+		valueEntered = JOptionPane.showInputDialog("please enter second number with decimal to divide by");
 		secondNum = Double.parseDouble(valueEntered); //converts the second number and stores in "firstNum"
 		
 		divideVal = firstNum / secondNum;
