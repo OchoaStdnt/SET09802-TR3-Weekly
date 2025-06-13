@@ -2,7 +2,6 @@ package Question4;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.JOptionPane;
 
 public class UserAgeAdd1 {
@@ -20,8 +19,7 @@ public class UserAgeAdd1 {
 		//prompt user for Name and Age (age will be parsed into an integer)
 		usrName = JOptionPane.showInputDialog("Enter Your Name");
 		usrAge = JOptionPane.showInputDialog("Enter your Age");
-		age = Integer.parseInt(usrAge);
-		age++;
+		age = Integer.parseInt(usrAge) + 1;	//parse the Int and add 1
 		
 		//construct output
 		output = usrName +" you will already be " +age +" years old by the year " +oYear +" on " +oTimeDate;
