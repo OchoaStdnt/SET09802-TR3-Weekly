@@ -18,12 +18,8 @@ public class Prog6 {
 			
 			output = output + "Number: " +genValue +"\n";
 			
-			if(genValue >= minValue) {
-				if(genValue >= maxValue) {
-					maxValue = genValue;
-				} else if (genValue <= minValue){
-					minValue = genValue;
-				}
+			
+			
 			}
 		}
 		
