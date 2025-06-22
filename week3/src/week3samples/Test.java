@@ -1,4 +1,4 @@
-package week3practicals;
+package week3samples;
 
 public class Test {
 
