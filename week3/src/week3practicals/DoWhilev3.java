@@ -12,12 +12,13 @@ public class DoWhilev3 {
 		// variables
 		String output;
 		int anotherGo;
+		int number = 1;
 		
 		do {
-		//display message
-		JOptionPane.showMessageDialog(null, "Hello", "", JOptionPane.INFORMATION_MESSAGE);
+		number = number * 2;
 		
-		output = "Do you want to see the message again?";
+		output = +number +"\n\nDo you want to double the number?";
+		
 		anotherGo = JOptionPane.showConfirmDialog(null, output, "Please Answer", JOptionPane.YES_NO_OPTION);
 		
 		} while (anotherGo == 0);	//0 is No a, yes would be 1
