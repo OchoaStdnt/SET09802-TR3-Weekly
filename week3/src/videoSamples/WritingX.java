@@ -23,7 +23,27 @@ public class WritingX {
 
 	public static void main(String[] args) {
 		// variables
-
+		int numRows = 7;
+		int numCols = 7;
+		
+		for(int row = 1; row <= numRows; row++) {
+			
+			int position2 = numCols - row + 1; //starting value is 7, this is for the position that goes in the direction /
+			// the other direction which uses "row" is moving in the direction \
+			for(int column = 1; column <= numCols; column++ ) {
+				
+				if(column == row || column == position2) {
+					System.out.print("#");
+				} else {
+					System.out.print(" ");
+				}	
+				
+			}
+				System.out.println();
+				
+				
+		}
+		
 	}
 
 }
