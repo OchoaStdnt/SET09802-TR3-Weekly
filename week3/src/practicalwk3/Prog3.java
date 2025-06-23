@@ -16,6 +16,8 @@ public class Prog3 {
 				int gradeInput;
 				int stdntFailed = 0;
 				int stdntPassed = 0;
+				int minGrade = 1;
+				int maxGrade = 100;
 				
 				//tell user what will be asked
 				JOptionPane.showMessageDialog(null, "You will be asked to enter 10 grades.", "NOTICE", JOptionPane.INFORMATION_MESSAGE);
@@ -24,6 +26,11 @@ public class Prog3 {
 				for(int count = 0; count < 10; count++) {
 					
 					gradeInput = Integer.parseInt(JOptionPane.showInputDialog("Enter Grade:"));
+					
+					//validates that entered number is not less than 1 or more than 100
+					while(gradeInput < minGrade || gradeInput > maxGrade) {	
+						gradeInput = Integer.parseInt(JOptionPane.showInputDialog("Grade must be between " +minGrade +" and " +maxGrade));
+					}
 					 
 					if(gradeInput >= 50) {
 						stdntPassed++;
