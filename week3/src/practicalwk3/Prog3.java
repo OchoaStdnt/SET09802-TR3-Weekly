@@ -2,7 +2,7 @@
  * Modify question 2 so that all marks must be between 0 and 100 inclusive.  
  * For each input, if the mark entered is outside this range keep 
  * looping until the user enters a correct value (i.e validate the input).
- * 
+ * COMPLETED
  */
 
 package practicalwk3;
