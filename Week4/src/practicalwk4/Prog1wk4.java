@@ -3,7 +3,6 @@
  */
 package practicalwk4;
 import javax.swing.JOptionPane;
-//import java.util.Arrays;
 
 public class Prog1wk4 {
 	public static void main(String[] args) {
