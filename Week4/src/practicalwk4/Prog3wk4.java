@@ -11,16 +11,12 @@ public class Prog3wk4 {
 	public static void main(String[] args) {
 		//variables and arrays
 		String output;
-		/*
-		int gradeA = 0; //75-100
-		int gradeB = 0; //60-74
-		int gradeC = 0; //50-59
-		int gradeD = 0; //0-49
-		*/
+		
 		int minGrade = 0;
 		int maxGrade = 100;
 		
-		final int GRADERANGE_SIZE = 4; //represents 0=A, 1=B, 2=C, 3=D
+		final int GRADERANGE_SIZE = 4; 
+		char[] gradeLabels = {'A', 'B', 'C', 'D'}; //represents 0=A (75-100), 1=B (60-74), 2=C (50-59), 3=D (0-49)
 		int[] gradeFrequency =  new int[GRADERANGE_SIZE];
 		
 		final int A_SIZE = 10;
@@ -40,29 +36,21 @@ public class Prog3wk4 {
 			}//end while loop
 			
 			//add count for frequency
-			if(stdntGrades[loop] >= 75 && stdntGrades[loop] <= 100) {
-				//gradeA++;
+			if(stdntGrades[loop] >= 75) {
 				gradeFrequency[0]++; //adds to the range of A
-			}
-			if(stdntGrades[loop] >= 60 && stdntGrades[loop] <= 74) {
-				//gradeB++;
+			}else if(stdntGrades[loop] >= 60) {
 				gradeFrequency[1]++; //adds to the range of B
-			}
-			if(stdntGrades[loop] >= 50 && stdntGrades[loop] <= 59) {
-				//gradeC++;
+			}else if(stdntGrades[loop] >= 50) {
 				gradeFrequency[2]++; //adds to the range of C
-			}
-			if(stdntGrades[loop] >= 0 && stdntGrades[loop] <= 49) {
-				//gradeD++;
+			}else {
 				gradeFrequency[3]++; //adds to the range of D
 			}
 		}//end for loop
 		
 		//finish constructing output for frequency
-		output = output + String.format("%-20s\t\t%-20d\n", "A", gradeFrequency[0]) //changed "gradeA" to "gradeFrequency[0]"
-		+ String.format("%-20s\t\t%-20d\n", "B", gradeFrequency[1]) //changed "gradeA" to "gradeFrequency[1]"
-		+ String.format("%-20s\t\t%-20d\n", "C", gradeFrequency[2]) //changed "gradeA" to "gradeFrequency[2]"
-		+ String.format("%-20s\t\t%-20d\n", "D", gradeFrequency[3]); //changed "gradeA" to "gradeFrequency[3]"
+		for(int loop = 0; loop < gradeLabels.length; loop++) {
+			output = output + String.format("%-20s\t\t%-20d\n", gradeLabels[loop], gradeFrequency[loop]);			
+		}
 		
 		//print output
 		JOptionPane.showMessageDialog(null, output, "Grades", JOptionPane.INFORMATION_MESSAGE);
