@@ -1,5 +1,6 @@
 /*
  * Created by Angel Ochoa
+ * will add more comments
  */
 
 package courseWork1;
@@ -31,9 +32,9 @@ public class MatrixApplication {
 		int[] rowAverages = new int[matrixApp.length];
 		
 		//array to store the averages of the columns
-		int[] columnAverages = new int[matrixApp[0].length]; //using 0 since there will alway be a row
+		int[] columnAverages = new int[matrixApp[0].length]; //using 0 since there will always be a row
 		
-		//populate array with random Numbers
+		//populate array with random Numbers. odd rows will have only odd numbers and even numbers will have only even numbers
 		MatrixOps.populateArray(matrixApp);
 		
 		//get average of each row of the array

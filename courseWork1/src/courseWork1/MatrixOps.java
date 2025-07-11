@@ -1,3 +1,5 @@
+//need to add javadoc info
+
 package courseWork1;
 
 import javax.swing.JOptionPane;
