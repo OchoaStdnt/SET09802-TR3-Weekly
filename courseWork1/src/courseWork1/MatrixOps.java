@@ -1,6 +1,7 @@
 package courseWork1;
 
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 public class MatrixOps {
 
@@ -59,10 +60,91 @@ public class MatrixOps {
 				
 				}//end while
 				
-				return userInput + 1; //adding one for the extra row/column for calculations
+				return userInput;
 		
 	}//end promptAndValidate
 	
+	public static void populateArray(int[][] array) {
+		
+		//initiate Random generator
+		Random GenNum = new Random();
+		
+		//populate array with random numbers
+		for(int rLoop = 0; rLoop < array.length; rLoop++) {
+			
+			for(int cLoop = 0; cLoop < array[rLoop].length; cLoop++) {
+				//variable to store random number
+				int rNum = GenNum.nextInt(1000); //generate a random number between 0-1000
+				array[rLoop][cLoop] = rNum;
+			}//end second for loop
+			
+		}//end first for loop
+		
+	}//end populateArray
 	
+	public static void getAverageRows(int[][] array, int[] array2) {
+		
+		//variables
+		int sumOfValues = 0;
+		int averageOfValues;
+		
+		for(int rLoop = 0; rLoop < array.length; rLoop++) {
+			for(int cLoop = 0; cLoop < array[rLoop].length; cLoop++) {
+				sumOfValues = sumOfValues + array[rLoop][cLoop];
+				
+			}
+			averageOfValues = sumOfValues / array[0].length; //divide by number of columns
+			array2[rLoop] = averageOfValues;
+			sumOfValues = 0; //reset sum of values for use in second loop
+		}//end first for loop
+		
+	}//end getAverageRows
 	
+	public static void getAverageColumns(int[][] array, int[] array2) {
+		
+		//variables
+		int sumOfValues = 0;
+		int averageOfValues;
+		
+		for(int cLoop = 0; cLoop < array[0].length; cLoop++) {
+			for(int rLoop = 0; rLoop < array.length; rLoop++) {
+				sumOfValues =  sumOfValues + array[rLoop][cLoop];
+			}//end second for loop
+			averageOfValues = sumOfValues / array.length; //divide by number of rows
+			array2[cLoop] = averageOfValues;
+			sumOfValues = 0; //reset sum of values for use in second loop
+		}//end first for loop
+		
+	}//end getAverageColumns
+	
+	public static int getAverageOfArray(int[][] array) {
+		//variables
+		int sumOfValues = 0;
+		int numOfValues = 0;
+		int averageOfValues;
+		
+		for(int rLoop = 0; rLoop < array.length; rLoop++) {
+			for(int cLoop = 0; cLoop < array[rLoop].length; cLoop++) {
+				sumOfValues = sumOfValues + array[rLoop][cLoop];
+				numOfValues++; //keep count of values being added
+			}//end second loop
+		}//end first for loop
+		averageOfValues = sumOfValues / numOfValues;
+		return averageOfValues;
+	}//end getAverageOfArray
 }//end class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
