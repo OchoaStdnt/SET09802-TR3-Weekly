@@ -94,46 +94,46 @@ public class MatrixOps {
 		
 	}//end populateArray
 	
-	public static void getAverageRows(int[][] array, int[] array2) {
+	public static void getAverageRows(int[][] array, float[] array2) {
 		
 		//variables
 		int sumOfValues = 0;
-		int averageOfValues;
+		float averageOfValues;
 		
 		for(int rLoop = 0; rLoop < array.length; rLoop++) {
 			for(int cLoop = 0; cLoop < array[rLoop].length; cLoop++) {
 				sumOfValues = sumOfValues + array[rLoop][cLoop];
 				
 			}
-			averageOfValues = sumOfValues / array[0].length; //divide by number of columns
+			averageOfValues = (float) sumOfValues / array[0].length; //divide by number of columns
 			array2[rLoop] = averageOfValues;
 			sumOfValues = 0; //reset sum of values for use in second loop
 		}//end first for loop
 		
 	}//end getAverageRows
 	
-	public static void getAverageColumns(int[][] array, int[] array2) {
+	public static void getAverageColumns(int[][] array, float[] array2) {
 		
 		//variables
 		int sumOfValues = 0;
-		int averageOfValues;
+		float averageOfValues;
 		
 		for(int cLoop = 0; cLoop < array[0].length; cLoop++) {
 			for(int rLoop = 0; rLoop < array.length; rLoop++) {
 				sumOfValues =  sumOfValues + array[rLoop][cLoop];
 			}//end second for loop
-			averageOfValues = sumOfValues / array.length; //divide by number of rows
+			averageOfValues = (float) sumOfValues / array.length; //divide by number of rows
 			array2[cLoop] = averageOfValues;
 			sumOfValues = 0; //reset sum of values for use in second loop
 		}//end first for loop
 		
 	}//end getAverageColumns
 	
-	public static int getAverageOfArray(int[][] array) {
+	public static float getAverageOfArray(int[][] array) {
 		//variables
 		int sumOfValues = 0;
 		int numOfValues = 0;
-		int averageOfValues;
+		float averageOfValues;
 		
 		for(int rLoop = 0; rLoop < array.length; rLoop++) {
 			for(int cLoop = 0; cLoop < array[rLoop].length; cLoop++) {
@@ -141,9 +141,40 @@ public class MatrixOps {
 				numOfValues++; //keep count of values being added
 			}//end second loop
 		}//end first for loop
-		averageOfValues = sumOfValues / numOfValues;
+		averageOfValues = (float) sumOfValues / numOfValues;
 		return averageOfValues;
 	}//end getAverageOfArray
+	
+	
+	public static int getSecondLargest(float[] array) {
+		
+		float maxValue = 0;
+		float secondMaxValue = 0;
+		int colNumber = 0;
+		
+		for(int loop = 0; loop < array.length; loop++) {
+			if (array[loop] > maxValue) {
+				secondMaxValue = maxValue;
+				maxValue = array[loop];
+			}else if (array[loop] > secondMaxValue && array [loop] != maxValue) { //using else if to validate two conditions
+				secondMaxValue = array[loop];
+			}
+		}//end for loop
+		System.out.print("\nSecond largest = "+secondMaxValue+"\n");
+		//find the colNumber
+		for(int loop = 0; loop < array.length; loop++) {
+			if (array[loop] == secondMaxValue) {
+				colNumber = loop;
+			}
+		}
+		
+		return colNumber + 1; //adds 1 to state the column number
+	
+	}//end getRowSecondLargest
+	
+	
+	
+	
 }//end class
 
 
