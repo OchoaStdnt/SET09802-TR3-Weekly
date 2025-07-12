@@ -94,6 +94,18 @@ public class MatrixOps {
 		
 	}//end populateArray
 	
+	public static void copy2DArray(int[][] originalArray, int[][] bakOfArray) {
+		
+		for(int rLoop = 0; rLoop < originalArray.length; rLoop++) {
+			for(int cLoop = 0; cLoop < originalArray[rLoop].length; cLoop++) {
+				bakOfArray[rLoop][cLoop] = originalArray[rLoop][cLoop];
+			}//end second for loop
+		}//end first for loop
+		
+	}//end copy2DArray
+	
+	
+	
 	public static void getAverageRows(int[][] array, float[] array2) {
 		
 		//variables
@@ -172,8 +184,62 @@ public class MatrixOps {
 	
 	}//end getRowSecondLargest
 	
+	public static void modify2DArray(int[][] twoDArray, float[] rowAverages, float[] colAverages) {
+		
+		for(int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			for(int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++) {
+				if(twoDArray[rLoop][cLoop] > rowAverages[rLoop] && twoDArray[rLoop][cLoop] > colAverages[cLoop]) {
+					twoDArray[rLoop][cLoop] = 1;
+				}else if (twoDArray[rLoop][cLoop] < rowAverages[rLoop] && twoDArray[rLoop][cLoop] < colAverages[cLoop]) {
+					twoDArray[rLoop][cLoop] = -1;
+				}else {
+					twoDArray[rLoop][cLoop] = 0;
+				}
+			}//end second for loop
+		}//end first for loop
+		
+	}//end modify2DArray
 	
 	
+	/*
+	 * Print 2dArray with JOptionPane
+	 */
+	public static void print2DArray(int[][] twoDArray) {
+		
+		//initialize output
+		String output = "";
+		
+		//construct output 
+		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
+				if(twoDArray[rLoop][cLoop] > 0) {
+					output = output + String.format("+%-6d|", twoDArray[rLoop][cLoop]);
+				} else {
+				output = output + String.format("%-6d|", twoDArray[rLoop][cLoop]);
+				}
+			}
+			output = output + "\n";
+		}//end first for loop
+		
+		JOptionPane.showMessageDialog(null, output, "Matrix", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	
+	
+	/*
+	//referece for stting output
+	//output construction start
+			output = "Tax for each salary:\n";
+			output = output + String.format("%-20s\t\t%-20s\n", "Salary", "Salary Tax");		
+			
+			for(int loop = 0; loop < A_SIZE; loop++) {
+				salary[loop] = Double.parseDouble(JOptionPane.showInputDialog("Enter Salary"));
+				salaryTax[loop] = salary[loop] * taxRate;
+				output = output + String.format("%-20.2f\t\t%-20.2f\n", salary[loop], salaryTax[loop]);
+			}
+			//print Salaries and taxes
+			JOptionPane.showMessageDialog(null, output, "contents", JOptionPane.INFORMATION_MESSAGE);
+	*/
 	
 }//end class
 

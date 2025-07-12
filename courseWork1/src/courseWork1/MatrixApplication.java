@@ -35,9 +35,26 @@ public class MatrixApplication {
 		
 		//build 2D matrix array
 		int[][] matrixApp = new int[nRows][nCols];
+		int[][] matrixAppBak = new int[nRows][nCols]; //to store a copy of the original array
 		
 		//populate array with random Numbers. odd rows will have only odd numbers and even numbers will have only even numbers
 		MatrixOps.populateArray(matrixApp);
+		
+		//make a copy of the array (this is just for backup purposes of original values)
+		MatrixOps.copy2DArray(matrixApp, matrixAppBak);
+		
+		
+		/*
+		//TEST print matrix
+				for(int rloop = 0; rloop < matrixApp.length; rloop++) {
+					for (int cloop = 0; cloop < matrixApp[rloop].length; cloop++) {
+						System.out.print(matrixApp[rloop][cloop]+"\t");
+						
+					}
+					System.out.print("\n");
+				}
+		*/
+		
 		
 		/*
 		 * END part 1
@@ -83,9 +100,42 @@ public class MatrixApplication {
 		 * END part 3
 		 */
 		
+		/*
+		 * START part 4
+		 * Modify the cells in the matrix as follows:
+		 * 
+		 * If the value in the cell is larger than the average of the 
+		 * corresponding column and larger than the average of the corresponding row,
+		 * then change the value of that cell to +1.
+		 * 
+		 * If the value in the cell is smaller than the average
+		 * of the corresponding column and smaller than the average of the corresponding row,
+		 * then change the value of that cell to -1.
+		 * 
+		 * Otherwise, change the value of the corresponding cell to 0 (zero).
+		 */
+		
+		//modify the values in the 2D array
+		MatrixOps.modify2DArray(matrixApp, rowAverages, columnAverages);
+		
+		/*
+		 * END part 4
+		 */
+		
+		/*
+		 * START part 5
+		 * Print out the number of cells in the matrix containing the values -1, +1 and 0.
+		 */
+		
+		MatrixOps.print2DArray(matrixApp);
+		
+		/*
+		 * END part 5
+		 */
 		
 		
-		//TEST only 
+		/*
+		//TEST print matrix
 		for(int rloop = 0; rloop < matrixApp.length; rloop++) {
 			for (int cloop = 0; cloop < matrixApp[rloop].length; cloop++) {
 				System.out.print(matrixApp[rloop][cloop]+"\t");
@@ -127,7 +177,7 @@ public class MatrixApplication {
 		
 		//reference for floats
 		//System.out.printf("%.1f\n", value2)
-		
+		*/
 		
 		
 		
