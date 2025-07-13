@@ -1,5 +1,3 @@
-//need to add javadoc info
-
 package courseWork1;
 
 import javax.swing.JOptionPane;
@@ -80,6 +78,10 @@ public class MatrixOps {
 		
 	}//end populateArray
 	
+	/*
+	 * This copies each value of an array and stores it on another array
+	 * THIS IS ONLY FOR BACKUP purposes
+	 */
 	public static void copy2DArray(int[][] originalArray, int[][] bakOfArray) {
 		
 		for(int rLoop = 0; rLoop < originalArray.length; rLoop++) {
@@ -91,7 +93,9 @@ public class MatrixOps {
 	}//end copy2DArray
 	
 	
-	
+	/*
+	 * Computes the average of each row and stores them in an array
+	 */
 	public static void getAverageRows(int[][] array, float[] array2) {
 		
 		//variables
@@ -110,6 +114,9 @@ public class MatrixOps {
 		
 	}//end getAverageRows
 	
+	/*
+	 * Computes the average of each column and stores them in an array
+	 */
 	public static void getAverageColumns(int[][] array, float[] array2) {
 		
 		//variables
@@ -127,6 +134,9 @@ public class MatrixOps {
 		
 	}//end getAverageColumns
 	
+	/*
+	 * Computes the average of all values in the 2D array and returns the average
+	 */
 	public static float getAverageOfArray(int[][] array) {
 		//variables
 		int sumOfValues = 0;
@@ -143,12 +153,14 @@ public class MatrixOps {
 		return averageOfValues;
 	}//end getAverageOfArray
 	
-	
+	/*
+	 * Checks an array for the second largest value and returns the position of the value
+	 */
 	public static int getSecondLargest(float[] array) {
 		
 		float maxValue = 0;
 		float secondMaxValue = 0;
-		int colNumber = 0;
+		int posNumber = 0;
 		
 		for(int loop = 0; loop < array.length; loop++) {
 			if (array[loop] > maxValue) {
@@ -159,17 +171,20 @@ public class MatrixOps {
 			}
 		}//end for loop
 		
-		//find the colNumber
+		//find the position Number
 		for(int loop = 0; loop < array.length; loop++) {
 			if (array[loop] == secondMaxValue) {
-				colNumber = loop;
+				posNumber = loop;
 			}
 		}
 		
-		return colNumber + 1; //adds 1 to state the column number
+		return posNumber + 1; //adds 1 to state the position number
 	
 	}//end getRowSecondLargest
 	
+	/*
+	 * Modifies an array by replacing values with -1, 1, and 0 based on row and columns averages
+	 */
 	public static void modify2DArray(int[][] twoDArray, float[] rowAverages, float[] colAverages) {
 		
 		for(int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
@@ -186,7 +201,9 @@ public class MatrixOps {
 		
 	}//end modify2DArray
 	
-	
+	/*
+	 * Checks the modified array and tracks how many -1, 1 and 0 and stores the count of each on an array
+	 */
 	public static void getValueCounts (int[][] arrayToCheck, int[] arrayToTrack) {
 		
 		for(int rLoop = 0; rLoop < arrayToCheck.length; rLoop++) {
@@ -199,23 +216,30 @@ public class MatrixOps {
 					arrayToTrack[2]++;
 				}
 			}//end second loop
+			
 		}//end first for loop
 		
 	}//end getValueCounts
 	
-	public static void printValueCounts(int[] arrayWithCounts) {
+	/*
+	 * Constructs the counts for -1, 1 and 0 found in an array
+	 */
+	public static String constructPrintValueCounts(int[] arrayWithCounts) {
 		
 		//variables
 		String output = "The number of cells with values -1 is " +arrayWithCounts[0] +"\n"
 				+"The number of cells with values +1 is " +arrayWithCounts[1] +"\n"
 				+"The number of cells with value 0 is " +arrayWithCounts[2];
 		//print the output
-		JOptionPane.showMessageDialog(null, output, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+		return output;
+		//JOptionPane.showMessageDialog(null, output, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	
+	/*
+	 * Constructs a 2D array
+	 */
 	//print a 2DArray
-	public static void print2DArray(int[][] twoDArray) {
+	public static String constructPrint2DArray(int[][] twoDArray) {
 		
 		//initialize output
 		String output = "";
@@ -229,11 +253,14 @@ public class MatrixOps {
 			output = output + "\n";
 		}//end first for loop
 		
-		JOptionPane.showMessageDialog(null, output, "Matrix", JOptionPane.INFORMATION_MESSAGE);
+		return output;
+		//JOptionPane.showMessageDialog(null, output, "Matrix", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	//Print 2dArray that includes "+: sign with JOptionPane
-	public static void printMod2DArray(int[][] twoDArray) {
+	/*
+	 * Constructs a 2D array adding a "+" to positive values
+	 */
+	public static String constructPrintMod2DArray(int[][] twoDArray) {
 		
 		//initialize output
 		String output = "";
@@ -247,41 +274,61 @@ public class MatrixOps {
 				} else {
 				output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
 				}
-			}
+			}//end second for loop
 			output = output + "\n";
 		}//end first for loop
 		
-		JOptionPane.showMessageDialog(null, output, "Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+		return output;
 	}
 	
+	/*
+	 * Construct the print of Averages, requires to state if its the rows or columns
+	 */
+	public static String constructPrintAverage(float[] arrayOfAverages, String isRowOrCol) {
+		
+		//initialize output
+		String output = "";
+		int positionNum = 1;
+		
+		for(int loop = 0; loop < arrayOfAverages.length; loop++) {
+			if(arrayOfAverages[loop] % 1 == 0) {
+			output = output + String.format("Average of " +isRowOrCol +" #" +positionNum +" is %.0f\n", arrayOfAverages[loop]);
+			}else {
+				output = output + String.format("Average of " +isRowOrCol +" #" +positionNum +" is %.1f\n", arrayOfAverages[loop]);
+			}
+			positionNum++;
+		}
+		
+		return output;
+		
+	}//end constructPrintAverage
 	
 	/*
-	//referece for stting output
-	//output construction start
-			output = "Tax for each salary:\n";
-			output = output + String.format("%-20s\t\t%-20s\n", "Salary", "Salary Tax");		
-			
-			for(int loop = 0; loop < A_SIZE; loop++) {
-				salary[loop] = Double.parseDouble(JOptionPane.showInputDialog("Enter Salary"));
-				salaryTax[loop] = salary[loop] * taxRate;
-				output = output + String.format("%-20.2f\t\t%-20.2f\n", salary[loop], salaryTax[loop]);
-			}
-			//print Salaries and taxes
-			JOptionPane.showMessageDialog(null, output, "contents", JOptionPane.INFORMATION_MESSAGE);
-	*/
+	 * Construct all the gathered information
+	 */
+	public static String constructPrintAll(int[][] twoDArrayBak, float[] rowAverages, float[] colAverages, float averageOfAllInArray, int rowPos, int colPos, int[][] twoDArray, int[] valCounts) {
+		//construct output
+		String output;
+		String isRow = "Row"; //used to state if we are constructing output about rows
+		String isCol = "Column"; //used to state if we are constructing output about rows
+		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
+				+ constructPrint2DArray(twoDArrayBak) +"\n"
+				+ "The average of each row and column is:\n"
+				+ constructPrintAverage(rowAverages, isRow) +"\n"
+				+ constructPrintAverage(colAverages, isCol) +"\n"
+				+ String.format("The average of all Values in the 2D array is: %.1f\n\n", averageOfAllInArray)
+				+ "The second largest average of the rows is located in row " +rowPos +"\n"
+				+ "The second largest average of the columns is located in column " +colPos +"\n\n"
+				+ constructPrintMod2DArray(twoDArray) +"\n"
+				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n"
+				+ constructPrintValueCounts(valCounts);
+		
+		
+		//print output
+		return output;
+	}//end printAll
 	
 }//end class
-
-
-
-
-
-
-
-
-
-
-
 
 
 

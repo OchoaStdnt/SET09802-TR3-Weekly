@@ -1,11 +1,11 @@
 /*
  * Created by Angel Ochoa
- * will add more comments
+ * JavaDoc lines pending
  */
 
 package courseWork1;
 
-
+import javax.swing.JOptionPane;
 
 public class MatrixApplication {
 
@@ -75,12 +75,12 @@ public class MatrixApplication {
 		 */
 		
 		//variables
-		int rowSecondLargest = 0;
-		int colSecondLargest = 0;
+		int positionOfRowSecondLargest = 0;
+		int positionOfColSecondLargest = 0;
 		
 		//get the second largest for the row and column
-		rowSecondLargest = MatrixOps.getSecondLargest(rowAverages); //passing array that keeps track of averages for rows
-		colSecondLargest = MatrixOps.getSecondLargest(columnAverages); //passing array that keeps track of averages for columns
+		positionOfRowSecondLargest = MatrixOps.getSecondLargest(rowAverages); //passing array that keeps track of averages for rows
+		positionOfColSecondLargest = MatrixOps.getSecondLargest(columnAverages); //passing array that keeps track of averages for columns
 		
 		//-----------------END part 3-----------------
 		
@@ -111,69 +111,29 @@ public class MatrixApplication {
 		
 		//array to store count of -1, +1 and 0
 		final int VALUECOUNTARRAY = 3;
-		int[] valueCounts = new int [VALUECOUNTARRAY]; //this will store the counts for -1 , +1 and 0 respectively
+		int[] valueCounts = new int [VALUECOUNTARRAY]; //this will store the counts for -1 , +1 and 0 respectively.
 		
-		//count values of the modified array that contains only -1, 1, and 0
+		//count values of the modified array that contains only -1, 1, and 0 and store in array
 		MatrixOps.getValueCounts (matrixApp, valueCounts);
 		
-		//print out the counts
-		MatrixOps.printValueCounts(valueCounts);
+		/*     ENABLE ONLY IF THE PRINT OUT OF THE LAST PART IS NEEDED
+		//Construct print out the counts
+		String outputValueCounts = MatrixOps.constructPrintValueCounts(valueCounts);
+		JOptionPane.showMessageDialog(null, outputValueCounts, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+		*/
 		
 		//-----------------END part 5-----------------
 		
-		
 		/*
-		 * 
-		 * 
-		//TEST print matrix
-		for(int rloop = 0; rloop < matrixApp.length; rloop++) {
-			for (int cloop = 0; cloop < matrixApp[rloop].length; cloop++) {
-				System.out.print(matrixApp[rloop][cloop]+"\t");
-				
-			}
-			System.out.print("\n");
-		}
+		 * -----------------START part 5 v2-----------------
+		 */
 		
-		//averages
-		System.out.print("\n");
-		for(int loop = 0; loop < rowAverages.length; loop++) {
-			if(rowAverages[loop] % 1 == 0) {
-				System.out.printf("%.0f\t", rowAverages[loop]);
-			}else {
-				System.out.printf("%.1f\t", rowAverages[loop]);
-			}
-		}
-		System.out.print("\n");
-		for(int loop = 0; loop < columnAverages.length; loop++) {
-			if(columnAverages[loop] % 1 == 0) {
-			System.out.printf("%.0f\t", columnAverages[loop]);
-			} else
-			{
-				System.out.printf("%.1f\t", columnAverages[loop]);
-			}
-		}
-		System.out.print("\n");
-		if(averageOfAllInArray % 1 == 0) {
-			System.out.printf("%.0f", averageOfAllInArray);
-		}else {
-			System.out.printf("%.1f", averageOfAllInArray);
-		}
+		//print all the gathered information
+		String printAll = MatrixOps.constructPrintAll(matrixAppBak, rowAverages, columnAverages, averageOfAllInArray, positionOfRowSecondLargest, positionOfColSecondLargest, matrixApp, valueCounts);
+		JOptionPane.showMessageDialog(null, printAll, "All gathered informatin in order", JOptionPane.INFORMATION_MESSAGE);
 		
-		System.out.print("\n");
-		System.out.print("\n");
-		//row and column with second largest
-		//System.out.print("row with second largest is " +rowSecondLargest +"\n");
-		//System.out.print("column with second largest is " +colSecondLargest +"\n");
+		//-----------------END part 5 v2-----------------
 		
-		//reference for floats
-		//System.out.printf("%.1f\n", value2)
-		///
-		///
-		*/
-		
-		
-		
-
 	}//end main
 
 }//end class
