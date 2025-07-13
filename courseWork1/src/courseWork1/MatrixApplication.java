@@ -39,12 +39,16 @@ public class MatrixApplication {
 		//build 2D matrix array
 		int[][] matrixApp = new int[nRows][nCols];
 		int[][] matrixAppBak = new int[nRows][nCols]; //to store a copy of the original array
+		//int[][] modOriginalMatrixApp = new int [nRows][nCols];
 		
 		//populate array with random Numbers. odd rows will have only odd numbers and even numbers will have only even numbers
 		MatrixOps.populateArray(matrixApp);
 		
-		//make a copy of the array (this is just for backup purposes of original values)
+		//make a copy of the array
 		MatrixOps.copy2DArray(matrixApp, matrixAppBak);
+		
+		//make another copy to add the averages later on
+		//MatrixOps.copy2DArray(matrixApp, modOriginalMatrixApp);
 		
 		//-----------------END part 1-----------------
 		
@@ -66,6 +70,10 @@ public class MatrixApplication {
 		
 		//average of all the values in the array
 		averageOfAllInArray = MatrixOps.getAverageOfArray(matrixApp);
+		
+		//add the averages to a copy of the array for display purposes
+		float[][] matrixAppWithAverages = new float[nRows+1][nCols+1];
+		MatrixOps.addAveragesToArray(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray);
 		
 		//-----------------END part 2-----------------
 		
@@ -129,8 +137,8 @@ public class MatrixApplication {
 		 */
 		
 		//print all the gathered information
-		String printAll = MatrixOps.constructPrintAll(matrixAppBak, rowAverages, columnAverages, averageOfAllInArray, positionOfRowSecondLargest, positionOfColSecondLargest, matrixApp, valueCounts);
-		JOptionPane.showMessageDialog(null, printAll, "All gathered informatin in order", JOptionPane.INFORMATION_MESSAGE);
+		String printAll = MatrixOps.constructPrintAll(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray, positionOfRowSecondLargest, positionOfColSecondLargest, matrixApp, valueCounts);
+		JOptionPane.showMessageDialog(null, printAll, "All gathered information in order", JOptionPane.INFORMATION_MESSAGE);
 		
 		//-----------------END part 5 v2-----------------
 		

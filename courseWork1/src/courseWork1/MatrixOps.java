@@ -154,6 +154,33 @@ public class MatrixOps {
 	}//end getAverageOfArray
 	
 	/*
+	 * Add the averages to a copy of the original array
+	 */
+	public static void addAveragesToArray(int[][] originalArray, float[][] arrayWithAverages, float[] rowAverages, float[] colAverages, float allAverage) {
+		
+		//variables
+		int rows = originalArray.length;
+		int cols = originalArray[0].length;
+		
+		for(int rLoop = 0; rLoop <= rows; rLoop++) { //using <= since the 2D array that will take the averages has 1 more row
+			for(int cLoop = 0; cLoop <= cols; cLoop++) { //using <= since the 2D array that will take the averages has 1 more column
+				if(rLoop < rows && cLoop < cols) {
+					arrayWithAverages[rLoop][cLoop] = originalArray[rLoop][cLoop]; 
+				}else if (rLoop < rows && cLoop == cols){
+					arrayWithAverages[rLoop][cLoop] = rowAverages[rLoop];
+				}else if(rLoop == rows && cLoop < cols) {
+					arrayWithAverages[rLoop][cLoop] = colAverages[cLoop];
+				}else if(rLoop == rows && cLoop == cols) {
+					arrayWithAverages[rLoop][cLoop] = allAverage;
+				}
+			}//end second for loop
+			
+		}//end first for loop
+		
+	}//end addAveragesToArray
+	
+	
+	/*
 	 * Checks an array for the second largest value and returns the position of the value
 	 */
 	public static int getSecondLargest(float[] array) {
@@ -236,7 +263,7 @@ public class MatrixOps {
 	}
 	
 	/*
-	 * Constructs a 2D array
+	 * Constructs an integer 2D array
 	 */
 	//print a 2DArray
 	public static String constructPrint2DArray(int[][] twoDArray) {
@@ -254,7 +281,31 @@ public class MatrixOps {
 		}//end first for loop
 		
 		return output;
-		//JOptionPane.showMessageDialog(null, output, "Matrix", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	/*
+	 * Constructs a float 2D array
+	 */
+	//print a 2DArray
+	public static String constructPrint2DArray(float[][] twoDArray) {
+		
+		//initialize output
+		String output = "";
+		
+		//construct output 
+		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			output = output + "|";
+			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
+				if(twoDArray[rLoop][cLoop] % 1 == 0) {
+				output = output + String.format("%-7.0f|", twoDArray[rLoop][cLoop]);
+				}else {
+					output = output + String.format("%-7.1f|", twoDArray[rLoop][cLoop]);
+				}
+			}//end second for loop
+			output = output + "\n";
+		}//end first for loop
+		
+		return output;
 	}
 	
 	/*
@@ -306,7 +357,7 @@ public class MatrixOps {
 	/*
 	 * Construct all the gathered information
 	 */
-	public static String constructPrintAll(int[][] twoDArrayBak, float[] rowAverages, float[] colAverages, float averageOfAllInArray, int rowPos, int colPos, int[][] twoDArray, int[] valCounts) {
+	public static String constructPrintAll(int[][] twoDArrayBak, float[][] twoDArrayWithAverages, float[] rowAverages, float[] colAverages, float averageOfAllInArray, int rowPos, int colPos, int[][] twoDArray, int[] valCounts) {
 		//construct output
 		String output;
 		String isRow = "Row"; //used to state if we are constructing output about rows
@@ -317,8 +368,11 @@ public class MatrixOps {
 				+ constructPrintAverage(rowAverages, isRow) +"\n"
 				+ constructPrintAverage(colAverages, isCol) +"\n"
 				+ String.format("The average of all Values in the 2D array is: %.1f\n\n", averageOfAllInArray)
+				+ "Array with the averages:\n"
+				+ constructPrint2DArray(twoDArrayWithAverages) +"\n"
 				+ "The second largest average of the rows is located in row " +rowPos +"\n"
 				+ "The second largest average of the columns is located in column " +colPos +"\n\n"
+				+ "Modified array with values -1, 1, and 0:\n"
 				+ constructPrintMod2DArray(twoDArray) +"\n"
 				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n"
 				+ constructPrintValueCounts(valCounts);
