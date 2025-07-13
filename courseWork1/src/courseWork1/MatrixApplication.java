@@ -12,7 +12,7 @@ public class MatrixApplication {
 	public static void main(String[] args) {
 		
 		/*
-		 * START Part 1
+		 * -----------------START Part 1----------------
 		 * Create a matrix of integer numbers with N rows and M columns (specified by the user,
 		 * such that 3 <= N <=10, 3 <= M <= 10) and fill it up by random integers ranging
 		 * from 0 to 1000 such that odd rows contain only odd numbers while even rows contain
@@ -24,14 +24,17 @@ public class MatrixApplication {
 		final int MAX_ROWS = 10;
 		final int MIN_COLS = 3;
 		final int MAX_COLS = 10;
+		String promptForRows;
 		int nRows = 0; //number of Rows
 		int nCols = 0; //number of Columns
-		//int averageOfAllInArray; // for part 2
 		
 		
 		//prompt user for nRows and nCols
-		nRows = MatrixOps.getRows(MIN_ROWS, MAX_ROWS);
-		nCols = MatrixOps.getCols(MIN_COLS, MAX_COLS);
+		promptForRows = "Please enter a number for rows between "+MIN_ROWS+" and "+MAX_ROWS;
+		nRows = MatrixOps.promptAndValidate(MIN_ROWS, MAX_ROWS, promptForRows);
+		
+		promptForRows = "Please enter a number for columns between "+MIN_COLS+" and "+MAX_COLS;
+		nCols = MatrixOps.promptAndValidate(MIN_COLS, MAX_COLS, promptForRows);
 		
 		//build 2D matrix array
 		int[][] matrixApp = new int[nRows][nCols];
@@ -44,21 +47,11 @@ public class MatrixApplication {
 		MatrixOps.copy2DArray(matrixApp, matrixAppBak);
 		
 		
-		/*
+		
 		//TEST print matrix
-				for(int rloop = 0; rloop < matrixApp.length; rloop++) {
-					for (int cloop = 0; cloop < matrixApp[rloop].length; cloop++) {
-						System.out.print(matrixApp[rloop][cloop]+"\t");
-						
-					}
-					System.out.print("\n");
-				}
-		*/
+		MatrixOps.print2DArray(matrixApp);
 		
-		
-		/*
-		 * END part 1
-		 */
+		//------------------END part 1--------------------
 		
 		/*
 		 * START part 2
@@ -127,7 +120,8 @@ public class MatrixApplication {
 		 * Print out the number of cells in the matrix containing the values -1, +1 and 0.
 		 */
 		
-		MatrixOps.print2DArray(matrixApp);
+		MatrixOps.printMod2DArray(matrixApp); //this is just to test
+		//MatrixOps.printModArrayCount();
 		
 		/*
 		 * END part 5

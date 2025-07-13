@@ -7,62 +7,40 @@ import java.util.Random;
 
 public class MatrixOps {
 
-	public static int getRows(int minRows, int maxRows) { 
-		//variables
-		int validRows;
-		JOptionPane.showMessageDialog(null, "You will need to enter a number for Rows");
-		validRows = promptAndValidate(minRows, maxRows);
-		
-		return validRows;
-		
-	}//end getRows
-	
-	
-	public static int getCols(int minCols, int maxCols) { 
-		//variables
-		int validCols;
-		JOptionPane.showMessageDialog(null, "You will need to enter a number for Columns");
-		validCols = promptAndValidate(minCols, maxCols);
-		
-		return validCols;
-		
-	}//end getRows
-	
-	
-	public static int promptAndValidate(int minNum, int maxNum) {
+	public static int promptAndValidate(int minNum, int maxNum, String prompt) {
 		
 		//variables
-				String inputToParse;
-				int userInput = 0; //this will store the value of the user
-				boolean validateInt = false;
+		String inputToParse;
+		int userInput = 0; //this will store the value of the user
+		boolean validateInt = false;
+		
+		
+		while(validateInt == false) { //this loop will check if the string has an Integer when parsing
+		
+			try {	
+			//prompt user for input
+			inputToParse = JOptionPane.showInputDialog(prompt);
+			userInput = Integer.parseInt(inputToParse);
+			
+			//validate integer
+			while(userInput < minNum || userInput > maxNum) {
 				
+				inputToParse = JOptionPane.showInputDialog("Number must be between "+minNum+" and "+maxNum);
+				userInput = Integer.parseInt(inputToParse);
 				
-				while(validateInt == false) { //this loop will check if the string has an Integer when parsing
-				
-					try {	
-					//prompt user for input
-					inputToParse = JOptionPane.showInputDialog("Please enter a number between "+minNum+" and "+maxNum);
-					userInput = Integer.parseInt(inputToParse);
-					
-					//validate integer
-					while(userInput < minNum || userInput > maxNum) {
-						
-						inputToParse = JOptionPane.showInputDialog("Number must be between "+minNum+" and "+maxNum);
-						userInput = Integer.parseInt(inputToParse);
-						
-					}
-					
-					//stop loop
-					validateInt = true;
-					
-					}catch (NumberFormatException e) { //this validates if the entered value is an Integer
-						JOptionPane.showMessageDialog(null, "A whole number must be entered, try again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-					}//end try
-				
-				
-				}//end while
-				
-				return userInput;
+			}
+			
+			//stop loop
+			validateInt = true;
+			
+			}catch (NumberFormatException e) { //this validates if the entered value is an Integer
+				JOptionPane.showMessageDialog(null, "A whole number must be entered, try again.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+			}//end try
+		
+		
+		}//end while
+		
+		return userInput;
 		
 	}//end promptAndValidate
 	
@@ -201,9 +179,10 @@ public class MatrixOps {
 	}//end modify2DArray
 	
 	
-	/*
-	 * Print 2dArray with JOptionPane
-	 */
+	
+	
+	
+	//print a 2DArray
 	public static void print2DArray(int[][] twoDArray) {
 		
 		//initialize output
@@ -211,19 +190,37 @@ public class MatrixOps {
 		
 		//construct output 
 		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			output = output + "|";
 			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
-				if(twoDArray[rLoop][cLoop] > 0) {
-					output = output + String.format("+%-6d|", twoDArray[rLoop][cLoop]);
-				} else {
-				output = output + String.format("%-6d|", twoDArray[rLoop][cLoop]);
-				}
-			}
+				output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
+			}//end second for loop
 			output = output + "\n";
 		}//end first for loop
 		
 		JOptionPane.showMessageDialog(null, output, "Matrix", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	//Print 2dArray that includes "+: sign with JOptionPane
+		public static void printMod2DArray(int[][] twoDArray) {
+			
+			//initialize output
+			String output = "";
+			
+			//construct output 
+			for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+				output = output + "|";
+				for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
+					if(twoDArray[rLoop][cLoop] > 0) {
+						output = output + String.format("+%-7d|", twoDArray[rLoop][cLoop]);
+					} else {
+					output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
+					}
+				}
+				output = output + "\n";
+			}//end first for loop
+			
+			JOptionPane.showMessageDialog(null, output, "Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+		}
 	
 	
 	/*
