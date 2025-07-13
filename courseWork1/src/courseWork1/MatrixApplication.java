@@ -12,7 +12,7 @@ public class MatrixApplication {
 	public static void main(String[] args) {
 		
 		/*
-		 * -----------------START Part 1----------------
+		 * -----------------START Part 1-----------------
 		 * Create a matrix of integer numbers with N rows and M columns (specified by the user,
 		 * such that 3 <= N <=10, 3 <= M <= 10) and fill it up by random integers ranging
 		 * from 0 to 1000 such that odd rows contain only odd numbers while even rows contain
@@ -46,15 +46,10 @@ public class MatrixApplication {
 		//make a copy of the array (this is just for backup purposes of original values)
 		MatrixOps.copy2DArray(matrixApp, matrixAppBak);
 		
-		
-		
-		//TEST print matrix
-		MatrixOps.print2DArray(matrixApp);
-		
-		//------------------END part 1--------------------
+		//-----------------END part 1-----------------
 		
 		/*
-		 * START part 2
+		 * -----------------START part 2-----------------
 		 * Compute the average of each row and each column and the average of the whole matrix.
 		 */
 		
@@ -72,12 +67,10 @@ public class MatrixApplication {
 		//average of all the values in the array
 		averageOfAllInArray = MatrixOps.getAverageOfArray(matrixApp);
 		
-		/*
-		 * END part 2
-		 */
+		//-----------------END part 2-----------------
 		
 		/*
-		 * START part 3
+		 * -----------------START part 3-----------------
 		 * Find the row and the column with the second largest average.
 		 */
 		
@@ -89,12 +82,10 @@ public class MatrixApplication {
 		rowSecondLargest = MatrixOps.getSecondLargest(rowAverages); //passing array that keeps track of averages for rows
 		colSecondLargest = MatrixOps.getSecondLargest(columnAverages); //passing array that keeps track of averages for columns
 		
-		/*
-		 * END part 3
-		 */
+		//-----------------END part 3-----------------
 		
 		/*
-		 * START part 4
+		 * -----------------START part 4-----------------
 		 * Modify the cells in the matrix as follows:
 		 * 
 		 * If the value in the cell is larger than the average of the 
@@ -111,21 +102,24 @@ public class MatrixApplication {
 		//modify the values in the 2D array
 		MatrixOps.modify2DArray(matrixApp, rowAverages, columnAverages);
 		
-		/*
-		 * END part 4
-		 */
+		//-----------------END part 4-----------------
 		
 		/*
-		 * START part 5
+		 * -----------------START part 5-----------------
 		 * Print out the number of cells in the matrix containing the values -1, +1 and 0.
 		 */
 		
-		MatrixOps.printMod2DArray(matrixApp); //this is just to test
-		//MatrixOps.printModArrayCount();
+		//array to store count of -1, +1 and 0
+		final int VALUECOUNTARRAY = 3;
+		int[] valueCounts = new int [VALUECOUNTARRAY]; //this will store the counts for -1 , +1 and 0 respectively
 		
-		/*
-		 * END part 5
-		 */
+		//count values of the modified array that contains only -1, 1, and 0
+		MatrixOps.getValueCounts (matrixApp, valueCounts);
+		
+		//print out the counts
+		MatrixOps.printValueCounts(valueCounts);
+		
+		//-----------------END part 5-----------------
 		
 		
 		/*

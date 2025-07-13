@@ -179,7 +179,31 @@ public class MatrixOps {
 	}//end modify2DArray
 	
 	
+	public static void getValueCounts (int[][] arrayToCheck, int[] arrayToTrack) {
+		
+		for(int rLoop = 0; rLoop < arrayToCheck.length; rLoop++) {
+			for(int cLoop = 0; cLoop < arrayToCheck[rLoop].length; cLoop++) {
+				if(arrayToCheck[rLoop][cLoop] == -1) {
+					arrayToTrack[0]++;
+				}else if(arrayToCheck[rLoop][cLoop] == 1) {
+					arrayToTrack[1]++;
+				}else {
+					arrayToTrack[2]++;
+				}
+			}//end second loop
+		}//end first for loop
+		
+	}//end getValueCounts
 	
+	public static void printValueCounts(int[] arrayWithCounts) {
+		
+		//variables
+		String output = "The number of cells with values -1 is " +arrayWithCounts[0] +"\n"
+				+"The number of cells with values +1 is " +arrayWithCounts[1] +"\n"
+				+"The number of cells with value 0 is " +arrayWithCounts[2];
+		//print the output
+		JOptionPane.showMessageDialog(null, output, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+	}
 	
 	
 	//print a 2DArray
@@ -201,26 +225,26 @@ public class MatrixOps {
 	}
 	
 	//Print 2dArray that includes "+: sign with JOptionPane
-		public static void printMod2DArray(int[][] twoDArray) {
-			
-			//initialize output
-			String output = "";
-			
-			//construct output 
-			for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
-				output = output + "|";
-				for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
-					if(twoDArray[rLoop][cLoop] > 0) {
-						output = output + String.format("+%-7d|", twoDArray[rLoop][cLoop]);
-					} else {
-					output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
-					}
+	public static void printMod2DArray(int[][] twoDArray) {
+		
+		//initialize output
+		String output = "";
+		
+		//construct output 
+		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			output = output + "|";
+			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
+				if(twoDArray[rLoop][cLoop] > 0) {
+					output = output + String.format("+%-7d|", twoDArray[rLoop][cLoop]);
+				} else {
+				output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
 				}
-				output = output + "\n";
-			}//end first for loop
-			
-			JOptionPane.showMessageDialog(null, output, "Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
-		}
+			}
+			output = output + "\n";
+		}//end first for loop
+		
+		JOptionPane.showMessageDialog(null, output, "Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
+	}
 	
 	
 	/*
