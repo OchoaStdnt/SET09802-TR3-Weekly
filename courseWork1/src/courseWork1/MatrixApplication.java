@@ -72,7 +72,7 @@ public class MatrixApplication {
 		averageOfAllInArray = MatrixOps.getAverageOfArray(matrixApp);
 		
 		//add the averages to a copy of the array for display purposes
-		float[][] matrixAppWithAverages = new float[nRows+1][nCols+1];
+		float[][] matrixAppWithAverages = new float[nRows+1][nCols+1]; //added +1 since this array will have an extra column and row
 		MatrixOps.addAveragesToArray(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray);
 		
 		//-----------------END part 2-----------------
