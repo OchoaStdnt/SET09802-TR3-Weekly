@@ -123,6 +123,8 @@ public class MatrixApplication {
 		
 		
 		/*
+		 * 
+		 * 
 		//TEST print matrix
 		for(int rloop = 0; rloop < matrixApp.length; rloop++) {
 			for (int cloop = 0; cloop < matrixApp[rloop].length; cloop++) {
@@ -160,11 +162,13 @@ public class MatrixApplication {
 		System.out.print("\n");
 		System.out.print("\n");
 		//row and column with second largest
-		System.out.print("row with second largest is " +rowSecondLargest +"\n");
-		System.out.print("column with second largest is " +colSecondLargest +"\n");
+		//System.out.print("row with second largest is " +rowSecondLargest +"\n");
+		//System.out.print("column with second largest is " +colSecondLargest +"\n");
 		
 		//reference for floats
 		//System.out.printf("%.1f\n", value2)
+		///
+		///
 		*/
 		
 		

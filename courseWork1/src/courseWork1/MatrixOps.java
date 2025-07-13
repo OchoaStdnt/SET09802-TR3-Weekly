@@ -7,6 +7,10 @@ import java.util.Random;
 
 public class MatrixOps {
 
+	/*
+	 * This prompts user to enter an integer between a minimum value and a max value 
+	 * and validates that its an integer before returning the value
+	 */
 	public static int promptAndValidate(int minNum, int maxNum, String prompt) {
 		
 		//variables
@@ -44,6 +48,10 @@ public class MatrixOps {
 		
 	}//end promptAndValidate
 	
+	/*
+	 * This populates an array with random numbers. for rows that are even(row #2) it populates with just
+	 * even numbers. if the row is an odd (row #1) it populates with odd numbers only.
+	 */
 	public static void populateArray(int[][] array) {
 		
 		//initiate Random generator
@@ -57,7 +65,7 @@ public class MatrixOps {
 				int rNum;
 				
 				//check if row is even or odd
-				if (rLoop % 2 == 0) { //checks for even numbers. anything that is divided by 2 and gives a reminder of 0 is an even number
+				if ((rLoop + 1) % 2 == 0) { //add + 1 to rLoop so that the index 0 is row 1 then checks if its an even row. anything that is divided by 2 and gives a reminder of 0 is an even number
 					rNum = GenNum.nextInt(501) * 2; //this generates even Numbers
 					
 				}else {
@@ -150,7 +158,7 @@ public class MatrixOps {
 				secondMaxValue = array[loop];
 			}
 		}//end for loop
-		System.out.print("\nSecond largest = "+secondMaxValue+"\n");
+		
 		//find the colNumber
 		for(int loop = 0; loop < array.length; loop++) {
 			if (array[loop] == secondMaxValue) {
