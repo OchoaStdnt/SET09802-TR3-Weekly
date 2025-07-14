@@ -265,7 +265,6 @@ public class MatrixOps {
 	/*
 	 * Constructs an integer 2D array
 	 */
-	//print a 2DArray
 	public static String constructPrint2DArray(int[][] twoDArray) {
 		
 		//initialize output
@@ -286,7 +285,6 @@ public class MatrixOps {
 	/*
 	 * Constructs a float 2D array
 	 */
-	//print a 2DArray
 	public static String constructPrint2DArray(float[][] twoDArray) {
 		
 		//initialize output
@@ -309,21 +307,21 @@ public class MatrixOps {
 	}
 	
 	/*
-	 * Constructs a 2D array adding a "+" to positive values
+	 * Constructs an Integer 2D array adding a "+" to positive values
 	 */
 	public static String constructPrintMod2DArray(int[][] twoDArray) {
 		
 		//initialize output
-		String output = "";
+		String output = "|";
 		
 		//construct output 
 		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
 			output = output + "|";
 			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
 				if(twoDArray[rLoop][cLoop] > 0) {
-					output = output + String.format("+%-7d|", twoDArray[rLoop][cLoop]);
+					output = output + String.format("+%-7d |", twoDArray[rLoop][cLoop]);
 				} else {
-				output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
+				output = output + String.format("%-7d |", twoDArray[rLoop][cLoop]);
 				}
 			}//end second for loop
 			output = output + "\n";
@@ -364,6 +362,7 @@ public class MatrixOps {
 		String isCol = "Column"; //used to state if we are constructing output about rows
 		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
 				+ constructPrint2DArray(twoDArrayBak) +"\n"
+				//+ construct2DArrayFormatted(twoDArrayBak) +"\n"
 				+ "The average of each row and column is:\n"
 				+ constructPrintAverage(rowAverages, isRow) +"\n"
 				+ constructPrintAverage(colAverages, isCol) +"\n"
@@ -383,7 +382,4 @@ public class MatrixOps {
 	}//end printAll
 	
 }//end class
-
-
-
 
