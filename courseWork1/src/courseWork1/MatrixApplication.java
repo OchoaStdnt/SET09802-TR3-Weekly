@@ -1,14 +1,34 @@
-/*
- * Created by Angel Ochoa
- * JavaDoc lines pending
- */
-
 package courseWork1;
-
 import javax.swing.JOptionPane;
 
+/**
+ * Main Application for Coursework 1.
+ * <p>
+ * Module Title: Software Development<br/>
+ * Module Code: SET09802 2024-5 TR3 001<br/>
+ * Lecturer: Professor Tomas Horvath<br/>
+ * </p>
+ * @author Angel Ochoa
+ * @version 1.0 14/07/2025
+ */
 public class MatrixApplication {
 
+	/**
+	 * This construction has been created only to prevent it from showing on the JavaDoc file.
+	 * @hidden
+	 */
+	public MatrixApplication() {
+		//constructor to hide from javadoc only
+	}
+	
+	/**
+	 * Start of the MatrixApplication.
+	 * <p>This application will generate 2D array based on user input and will then
+	 * perform several tasks. All tasks completed will be displayed with {@code JOptionPane}
+	 * to the user.
+	 * </p>
+	 * @param args Command-line arguments passed to the application.
+	 */
 	public static void main(String[] args) {
 		
 		/*
@@ -18,13 +38,12 @@ public class MatrixApplication {
 		 * from 0 to 1000 such that odd rows contain only odd numbers while even rows contain
 		 * only even numbers.
 		 */
-		
 		// variables
-		final int MIN_ROWS = 3;
-		final int MAX_ROWS = 10;
-		final int MIN_COLS = 3;
-		final int MAX_COLS = 10;
-		String promptForRows;
+		final int MIN_ROWS = 3; //the minimum number of Rows allowed
+		final int MAX_ROWS = 10; //the maximum number of Rows allowed
+		final int MIN_COLS = 3; //the minimum number of Columns allowed
+		final int MAX_COLS = 10; //the maximum number of Rows allowed
+		String promptForRows; //stores the prompt that will be used to ask user for number of rows/columns
 		int nRows = 0; //number of Rows
 		int nCols = 0; //number of Columns
 		
@@ -39,7 +58,6 @@ public class MatrixApplication {
 		//build 2D matrix array
 		int[][] matrixApp = new int[nRows][nCols];
 		int[][] matrixAppBak = new int[nRows][nCols]; //to store a copy of the original array
-		//int[][] modOriginalMatrixApp = new int [nRows][nCols];
 		
 		//populate array with random Numbers. odd rows will have only odd numbers and even numbers will have only even numbers
 		MatrixOps.populateArray(matrixApp);
@@ -83,12 +101,12 @@ public class MatrixApplication {
 		 */
 		
 		//variables
-		int positionOfRowSecondLargest = 0;
-		int positionOfColSecondLargest = 0;
+		int positionOfRowSecondLargest = 0; //row number of value
+		int positionOfColSecondLargest = 0; //column number of value
 		
 		//get the second largest for the row and column
-		positionOfRowSecondLargest = MatrixOps.getSecondLargest(rowAverages); //passing array that keeps track of averages for rows
-		positionOfColSecondLargest = MatrixOps.getSecondLargest(columnAverages); //passing array that keeps track of averages for columns
+		positionOfRowSecondLargest = MatrixOps.getSecondLargest(rowAverages) + 1; //adding plus one to indicate actual row #
+		positionOfColSecondLargest = MatrixOps.getSecondLargest(columnAverages) + 1; //adding plus one to indicate actual column #
 		
 		//-----------------END part 3-----------------
 		
@@ -107,7 +125,7 @@ public class MatrixApplication {
 		 * Otherwise, change the value of the corresponding cell to 0 (zero).
 		 */
 		
-		//modify the values in the 2D array
+		//modify the values in the 2D array with -1, 1, and 0s
 		MatrixOps.modify2DArray(matrixApp, rowAverages, columnAverages);
 		
 		//-----------------END part 4-----------------

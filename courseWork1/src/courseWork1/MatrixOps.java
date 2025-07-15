@@ -3,11 +3,27 @@ package courseWork1;
 import javax.swing.JOptionPane;
 import java.util.Random;
 
+/**
+ * Class containing methods for generating arrays, mathematical 
+ * calculations, and constructing output data for main MatrixApplication.
+ */
 public class MatrixOps {
 
-	/*
-	 * This prompts user to enter an integer between a minimum value and a max value 
-	 * and validates that its an integer before returning the value
+	/**
+	 * This construction has been created only to prevent it from showing on the JavaDoc file.
+	 * @hidden
+	 */
+	public MatrixOps () {
+		//constructor to hide from Javadoc only
+	}
+	
+	/**
+	 * Prompts the user to enter an integer between {@code minNum} and {@code maxNum},
+     * validating that it is an integer within the specified range.
+	 * @param minNum The minimum accepted integer
+	 * @param maxNum The maximum accepted integer
+	 * @param prompt The message to display when prompting user
+	 * @return The value entered by user once validated
 	 */
 	public static int promptAndValidate(int minNum, int maxNum, String prompt) {
 		
@@ -46,9 +62,11 @@ public class MatrixOps {
 		
 	}//end promptAndValidate
 	
-	/*
-	 * This populates an array with random numbers. for rows that are even(row #2) it populates with just
-	 * even numbers. if the row is an odd (row #1) it populates with odd numbers only.
+	/**
+	 * This populates an integer 2D array with random numbers. For rows that are even(row #2) 
+	 * it populates with just even numbers and if the row is an odd (row #1)
+	 * it populates with odd numbers only.
+	 * @param array integer array that will be populated with random #s
 	 */
 	public static void populateArray(int[][] array) {
 		
@@ -78,9 +96,10 @@ public class MatrixOps {
 		
 	}//end populateArray
 	
-	/*
-	 * This copies each value of an array and stores it on another array
-	 * THIS IS ONLY FOR BACKUP purposes
+	/**
+	 * Copies content of an integer 2D array to another integer 2D array.
+	 * @param originalArray Array to be copied
+	 * @param bakOfArray Copy of {@code originalArray}
 	 */
 	public static void copy2DArray(int[][] originalArray, int[][] bakOfArray) {
 		
@@ -92,9 +111,10 @@ public class MatrixOps {
 		
 	}//end copy2DArray
 	
-	
-	/*
-	 * Computes the average of each row and stores them in an array
+	/**
+	 * Computes the average of each row and stores them in a float array.
+	 * @param array Array containing values to get average
+	 * @param array2 Array where the averages will be stored
 	 */
 	public static void getAverageRows(int[][] array, float[] array2) {
 		
@@ -114,8 +134,10 @@ public class MatrixOps {
 		
 	}//end getAverageRows
 	
-	/*
-	 * Computes the average of each column and stores them in an array
+	/**
+	 * Computes the average of each column and stores them in a float array.
+	 * @param array Array containing values to get average
+	 * @param array2 Array where the averages will be stored
 	 */
 	public static void getAverageColumns(int[][] array, float[] array2) {
 		
@@ -134,8 +156,10 @@ public class MatrixOps {
 		
 	}//end getAverageColumns
 	
-	/*
-	 * Computes the average of all values in the 2D array and returns the average
+	/**
+	 * Computes the average of all values in an integer 2D array and returns the average
+	 * @param array Array containing values to get average
+	 * @return The average of all values in array
 	 */
 	public static float getAverageOfArray(int[][] array) {
 		//variables
@@ -153,8 +177,13 @@ public class MatrixOps {
 		return averageOfValues;
 	}//end getAverageOfArray
 	
-	/*
-	 * Add the averages to a copy of the original array
+	/**
+	 * Copies content of an integer 2D Array and adds in row, column and total averages.
+	 * @param originalArray Original array to be copied
+	 * @param arrayWithAverages a float array that will containing values of {@code originalArray} with extra row and column
+	 * @param rowAverages Row averages to be added to {@code arrayWithAverages}
+	 * @param colAverages Column averages to be added to {@code arrayWithAverages}
+	 * @param allAverage Averages of all values of an Array to be added to {@code arrayWithAverages}
 	 */
 	public static void addAveragesToArray(int[][] originalArray, float[][] arrayWithAverages, float[] rowAverages, float[] colAverages, float allAverage) {
 		
@@ -179,9 +208,10 @@ public class MatrixOps {
 		
 	}//end addAveragesToArray
 	
-	
-	/*
-	 * Checks an array for the second largest value and returns the position of the value
+	/**
+	 * Checks a float array for the second largest value and returns the index location of the value.
+	 * @param array Array containing values
+	 * @return The index number of the second largest
 	 */
 	public static int getSecondLargest(float[] array) {
 		
@@ -205,12 +235,15 @@ public class MatrixOps {
 			}
 		}
 		
-		return posNumber + 1; //adds 1 to state the position number
+		return posNumber; //adds 1 to state the position number
 	
 	}//end getRowSecondLargest
 	
-	/*
-	 * Modifies an array by replacing values with -1, 1, and 0 based on row and columns averages
+	/**
+	 * Modifies an integer 2D array by replacing values with -1, 1, and 0 based on row and columns averages.
+	 * @param twoDArray The array to be modified
+	 * @param rowAverages Array with row averages to check
+	 * @param colAverages Array with column averages to check
 	 */
 	public static void modify2DArray(int[][] twoDArray, float[] rowAverages, float[] colAverages) {
 		
@@ -228,8 +261,10 @@ public class MatrixOps {
 		
 	}//end modify2DArray
 	
-	/*
-	 * Checks the modified array and tracks how many -1, 1 and 0 and stores the count of each on an array
+	/**
+	 * Check a 2D array for values equal to -1, 1 and 0 and stores the count of each on an integer array.
+	 * @param arrayToCheck The array with the values to check
+	 * @param arrayToTrack Array to store the counts
 	 */
 	public static void getValueCounts (int[][] arrayToCheck, int[] arrayToTrack) {
 		
@@ -248,8 +283,10 @@ public class MatrixOps {
 		
 	}//end getValueCounts
 	
-	/*
-	 * Constructs the counts for -1, 1 and 0 found in an array
+	/**
+	 * Constructs a String with the counts for -1, 1 and 0 found in an integer array
+	 * @param arrayWithCounts Array with counts
+	 * @return string to output
 	 */
 	public static String constructPrintValueCounts(int[] arrayWithCounts) {
 		
@@ -262,8 +299,10 @@ public class MatrixOps {
 		//JOptionPane.showMessageDialog(null, output, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	/*
-	 * Constructs an integer 2D array
+	/**
+	 * Constructs a String to display contents of a integer 2D array
+	 * @param twoDArray Array with values
+	 * @return string with 2D array for output
 	 */
 	public static String constructPrint2DArray(int[][] twoDArray) {
 		
@@ -282,8 +321,10 @@ public class MatrixOps {
 		return output;
 	}
 	
-	/*
-	 * Constructs a float 2D array
+	/**
+	 * Constructs a String to display contents of a float 2D array.
+	 * @param twoDArray Array with values
+	 * @return string with 2D array for output
 	 */
 	public static String constructPrint2DArray(float[][] twoDArray) {
 		
@@ -309,6 +350,11 @@ public class MatrixOps {
 	/*
 	 * Constructs an Integer 2D array adding a "+" to positive values
 	 */
+	/**
+	 * Constructs a String that adds "+" to positive #s before displaying an integer 2D array.
+	 * @param twoDArray Array with values
+	 * @return string with 2D array for output
+	 */
 	public static String constructPrintMod2DArray(int[][] twoDArray) {
 		
 		//initialize output
@@ -330,14 +376,24 @@ public class MatrixOps {
 		return output;
 	}
 	
-	/*
-	 * Construct the print of Averages, requires to state if its the rows or columns
+	/**
+	 * Constructs a String to display values of a float array. String construction requires to state if the array is for rows or columns.
+	 * @param arrayOfAverages array that has the average values
+	 * @param isRow if true then String will be constructed for rows. If false string will be constructed for columns
+	 * @return string to display averages for rows or columns
 	 */
-	public static String constructPrintAverage(float[] arrayOfAverages, String isRowOrCol) {
+	public static String constructPrintAverage(float[] arrayOfAverages, Boolean isRow) {
 		
 		//initialize output
 		String output = "";
+		String isRowOrCol;
 		int positionNum = 1;
+		
+		if(isRow == true) {
+			isRowOrCol = "Row";
+		}else {
+			isRowOrCol = "Column";
+		}
 		
 		for(int loop = 0; loop < arrayOfAverages.length; loop++) {
 			if(arrayOfAverages[loop] % 1 == 0) {
@@ -352,14 +408,26 @@ public class MatrixOps {
 		
 	}//end constructPrintAverage
 	
-	/*
-	 * Construct all the gathered information
+	/**
+	 * Construct String to display all the gathered information.
+	 * @param twoDArrayBak a backup integer 2D array that contains values when original array was first created
+	 * @param twoDArrayWithAverages integer 2D array with averages added on the last rows and columns
+	 * @param rowAverages float array with averages of rows
+	 * @param colAverages float array with averages of columns
+	 * @param averageOfAllInArray average of all values in original array before being modified.
+	 * @param rowPos the position of the second largest value in the rows of the original array before being modified
+	 * @param colPos the position of the second largest value in the columns of the original array before being modified
+	 * @param twoDArray the original array that has been modified with -1, 1, and 0s
+	 * @param valCounts integer array that keeps track of how many -1, 1, and 0s are on the original array
+	 * @return string to display all the information of the MatrixApplication
 	 */
 	public static String constructPrintAll(int[][] twoDArrayBak, float[][] twoDArrayWithAverages, float[] rowAverages, float[] colAverages, float averageOfAllInArray, int rowPos, int colPos, int[][] twoDArray, int[] valCounts) {
 		//construct output
 		String output;
-		String isRow = "Row"; //used to state if we are constructing output about rows
-		String isCol = "Column"; //used to state if we are constructing output about rows
+		Boolean isRow = true; //for use with constructPrintAverage()
+		Boolean isCol = false; //for use with constructPrintAverage()
+		//String isRow = "Row"; //used to state if we are constructing output about rows
+		//String isCol = "Column"; //used to state if we are constructing output about rows
 		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
 				+ constructPrint2DArray(twoDArrayBak) +"\n"
 				//+ construct2DArrayFormatted(twoDArrayBak) +"\n"
