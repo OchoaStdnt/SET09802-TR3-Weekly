@@ -1,7 +1,7 @@
 package courseWork1;
 
-import javax.swing.JOptionPane;
-import java.util.Random;
+import javax.swing.JOptionPane; //for GUI
+import java.util.Random; //for random number generation
 
 /**
  * Class containing methods for generating arrays, mathematical 

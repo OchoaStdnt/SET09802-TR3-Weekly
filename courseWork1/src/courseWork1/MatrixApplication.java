@@ -1,5 +1,6 @@
 package courseWork1;
-import javax.swing.JOptionPane;
+
+import javax.swing.JOptionPane; //for GUI
 
 /**
  * Main Application for Coursework 1.
@@ -7,6 +8,11 @@ import javax.swing.JOptionPane;
  * Module Title: Software Development<br/>
  * Module Code: SET09802 2024-5 TR3 001<br/>
  * Lecturer: Professor Tomas Horvath<br/>
+ * </p>
+ * <p>
+ * This application will generate 2D array based on user input and will then
+ * perform several tasks. All tasks completed will be displayed with {@code JOptionPane}
+ * to the user.
  * </p>
  * @author Angel Ochoa
  * @version 1.0 14/07/2025
@@ -23,21 +29,12 @@ public class MatrixApplication {
 	
 	/**
 	 * Start of the MatrixApplication.
-	 * <p>This application will generate 2D array based on user input and will then
-	 * perform several tasks. All tasks completed will be displayed with {@code JOptionPane}
-	 * to the user.
-	 * </p>
-	 * @param args Command-line arguments passed to the application.
+	 * @param args Command-line arguments (not used).
 	 */
 	public static void main(String[] args) {
 		
-		/*
-		 * -----------------START Part 1-----------------
-		 * Create a matrix of integer numbers with N rows and M columns (specified by the user,
-		 * such that 3 <= N <=10, 3 <= M <= 10) and fill it up by random integers ranging
-		 * from 0 to 1000 such that odd rows contain only odd numbers while even rows contain
-		 * only even numbers.
-		 */
+		//-----------------START Part 1----------------- 
+		
 		// variables
 		final int MIN_ROWS = 3; //the minimum number of Rows allowed
 		final int MAX_ROWS = 10; //the maximum number of Rows allowed
@@ -65,15 +62,7 @@ public class MatrixApplication {
 		//make a copy of the array
 		MatrixOps.copy2DArray(matrixApp, matrixAppBak);
 		
-		//make another copy to add the averages later on
-		//MatrixOps.copy2DArray(matrixApp, modOriginalMatrixApp);
-		
-		//-----------------END part 1-----------------
-		
-		/*
-		 * -----------------START part 2-----------------
-		 * Compute the average of each row and each column and the average of the whole matrix.
-		 */
+		//-----------------START part 2-----------------
 		
 		//variables and arrays
 		float averageOfAllInArray;
@@ -93,12 +82,7 @@ public class MatrixApplication {
 		float[][] matrixAppWithAverages = new float[nRows+1][nCols+1]; //added +1 since this array will have an extra column and row
 		MatrixOps.addAveragesToArray(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray);
 		
-		//-----------------END part 2-----------------
-		
-		/*
-		 * -----------------START part 3-----------------
-		 * Find the row and the column with the second largest average.
-		 */
+		//-----------------START part 3-----------------
 		
 		//variables
 		int positionOfRowSecondLargest = 0; //row number of value
@@ -108,32 +92,12 @@ public class MatrixApplication {
 		positionOfRowSecondLargest = MatrixOps.getSecondLargest(rowAverages) + 1; //adding plus one to indicate actual row #
 		positionOfColSecondLargest = MatrixOps.getSecondLargest(columnAverages) + 1; //adding plus one to indicate actual column #
 		
-		//-----------------END part 3-----------------
-		
-		/*
-		 * -----------------START part 4-----------------
-		 * Modify the cells in the matrix as follows:
-		 * 
-		 * If the value in the cell is larger than the average of the 
-		 * corresponding column and larger than the average of the corresponding row,
-		 * then change the value of that cell to +1.
-		 * 
-		 * If the value in the cell is smaller than the average
-		 * of the corresponding column and smaller than the average of the corresponding row,
-		 * then change the value of that cell to -1.
-		 * 
-		 * Otherwise, change the value of the corresponding cell to 0 (zero).
-		 */
+		//-----------------START part 4-----------------
 		
 		//modify the values in the 2D array with -1, 1, and 0s
 		MatrixOps.modify2DArray(matrixApp, rowAverages, columnAverages);
 		
-		//-----------------END part 4-----------------
-		
-		/*
-		 * -----------------START part 5-----------------
-		 * Print out the number of cells in the matrix containing the values -1, +1 and 0.
-		 */
+		//-----------------START part 5-----------------
 		
 		//array to store count of -1, +1 and 0
 		final int VALUECOUNTARRAY = 3;
@@ -148,18 +112,41 @@ public class MatrixApplication {
 		JOptionPane.showMessageDialog(null, outputValueCounts, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
 		*/
 		
-		//-----------------END part 5-----------------
-		
-		/*
-		 * -----------------START part 5 v2-----------------
-		 */
-		
 		//print all the gathered information
 		String printAll = MatrixOps.constructPrintAll(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray, positionOfRowSecondLargest, positionOfColSecondLargest, matrixApp, valueCounts);
 		JOptionPane.showMessageDialog(null, printAll, "All gathered information in order", JOptionPane.INFORMATION_MESSAGE);
 		
-		//-----------------END part 5 v2-----------------
-		
 	}//end main
 
 }//end class
+
+/* 
+ * ----------PART 1------------
+ * Create a matrix of integer numbers with N rows and M columns (specified by the user,
+ * such that 3 <= N <=10, 3 <= M <= 10) and fill it up by random integers ranging
+ * from 0 to 1000 such that odd rows contain only odd numbers while even rows contain
+ * only even numbers.
+ *
+ * ----------PART 2------------
+ * Compute the average of each row and each column and the average of the whole matrix.
+ * 
+ * ----------PART 3------------
+ * Find the row and the column with the second largest average.
+ * 
+ * ----------PART 4------------
+ * Modify the cells in the matrix as follows:
+ * 
+ * If the value in the cell is larger than the average of the 
+ * corresponding column and larger than the average of the corresponding row,
+ * then change the value of that cell to +1.
+ * 
+ * If the value in the cell is smaller than the average
+ * of the corresponding column and smaller than the average of the corresponding row,
+ * then change the value of that cell to -1.
+ * 
+ * Otherwise, change the value of the corresponding cell to 0 (zero).
+ * 
+ * ----------PART 5------------
+ * Print out the number of cells in the matrix containing the values -1, +1 and 0.
+ * 
+ */
