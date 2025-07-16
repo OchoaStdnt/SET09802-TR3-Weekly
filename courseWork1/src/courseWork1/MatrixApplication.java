@@ -1,6 +1,8 @@
 package courseWork1;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JOptionPane; //for GUI
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -118,19 +120,20 @@ public class MatrixApplication {
 		Boolean isRow = true; //for use with constructPrintAverage()
 		Boolean isCol = false; //for use with constructPrintAverage()
 		
-		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
-				+ MatrixOps.constructPrint2DArray(matrixAppBak) +"\n"
-				+ "The average of each row and column are:\n"
+		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n\n"
+				+ MatrixOps.constructPrint2DArray(matrixAppBak) +"\n\n" //prints int array
+				+ "The average of each row and column are:\n\n"
 				+ MatrixOps.constructPrintAverage(rowAverages, isRow) +"\n"
 				+ MatrixOps.constructPrintAverage(columnAverages, isCol) +"\n"
-				+ String.format("The average of all Values in the 2D array is: %.1f\n\n", averageOfAllInArray)
-				+ "Array with the averages added to the last row and column for display:\n"
-				+ MatrixOps.constructPrint2DArray(matrixAppWithAverages) +"\n"  //prints float array
+				+ String.format("The average of all Values in the 2D array is: %.1f\n\n\n", averageOfAllInArray)
+				+ "Array with row averages added to the end of each row, column averages at the bottom,\n"
+				+ "and the overall average at the bottom-right corner:\n\n"
+				+ MatrixOps.constructPrint2DArray(matrixAppWithAverages) +"\n\n"  //prints float array
 				+ "The second largest average of the rows is located in row " +RowSecondLargestPosition +"\n"
-				+ "The second largest average of the columns is located in column " +ColSecondLargestPosition +"\n\n"
-				+ "Modified array with values -1, 1, and 0:\n"
+				+ "The second largest average of the columns is located in column " +ColSecondLargestPosition +"\n\n\n"
+				+ "Modified array with values -1, 1, and 0:\n\n"
 				+ MatrixOps.constructPrint2DArray(matrixAppMod) +"\n" //prints String array
-				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n"
+				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n\n"
 				+ MatrixOps.constructPrintValueCounts(valueCounts);
 		
 		// better format for JOptionPane output display
@@ -139,7 +142,12 @@ public class MatrixApplication {
 		textArea.setEditable(false); //makes the text area read only
 		textArea.setCaretPosition(0); //makes the starting position of the txt area always start at the top
 		JScrollPane scrollPane = new JScrollPane(textArea); //add the scroll to the text area
-		scrollPane.setPreferredSize(new Dimension(1000, 850)); //limit the size of the pane
+		
+		//modify size of JOption prompt
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //get monitor screen size
+		int sWidth = (int) (screenSize.width * 0.5);   // 50% of screen width
+		int sHeight = (int) (screenSize.height * 0.5); // 50% of screen height
+		scrollPane.setPreferredSize(new Dimension(sWidth, sHeight)); //limit the size of the pane
 		
 		//print output
 		JOptionPane.showMessageDialog(null, scrollPane, "All gathered information in order", JOptionPane.INFORMATION_MESSAGE);
