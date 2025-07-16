@@ -235,7 +235,7 @@ public class MatrixOps {
 			}
 		}
 		
-		return posNumber; //adds 1 to state the position number
+		return posNumber; //return index #
 	
 	}//end getRowSecondLargest
 	
@@ -260,6 +260,25 @@ public class MatrixOps {
 		}//end first for loop
 		
 	}//end modify2DArray
+	
+	/**
+	 * Copies content of an integer 2D array to a String 2D array and appends + to positive numbers.
+	 * @param originalArray Array to be copied
+	 * @param stringArray Copy of {@code originalArray} with + appended to positive numbers
+	 */
+	public static void copy2DArrayAndAppendSign(int[][] originalArray, String[][] stringArray) {
+		
+		for(int rLoop = 0; rLoop < originalArray.length; rLoop++) {
+			for(int cLoop = 0; cLoop < originalArray[rLoop].length; cLoop++) {
+				if(originalArray[rLoop][cLoop] > 0) {
+				stringArray[rLoop][cLoop] = "+" +String.valueOf(originalArray[rLoop][cLoop]);
+				} else {
+				stringArray[rLoop][cLoop] = String.valueOf(originalArray[rLoop][cLoop]);
+				}
+			}//end second for loop
+		}//end first for loop
+		
+	}//end copy2DArray
 	
 	/**
 	 * Check a 2D array for values equal to -1, 1 and 0 and stores the count of each on an integer array.
@@ -313,7 +332,29 @@ public class MatrixOps {
 		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
 			output = output + "|";
 			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
-				output = output + String.format("%-7d|", twoDArray[rLoop][cLoop]);
+				output = output + String.format("  %-4d |", twoDArray[rLoop][cLoop]);
+			}//end second for loop
+			output = output + "\n";
+		}//end first for loop
+		
+		return output;
+	}
+	
+	/**
+	 * Constructs a String to display contents of a String 2D array
+	 * @param twoDArray Array with values
+	 * @return string with 2D array for output
+	 */
+	public static String constructPrint2DArray(String[][] twoDArray) {
+		
+		//initialize output
+		String output = "";
+		
+		//construct output 
+		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
+			output = output + "|";
+			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
+				output = output + String.format("  %-3s |", twoDArray[rLoop][cLoop]);
 			}//end second for loop
 			output = output + "\n";
 		}//end first for loop
@@ -336,38 +377,9 @@ public class MatrixOps {
 			output = output + "|";
 			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
 				if(twoDArray[rLoop][cLoop] % 1 == 0) {
-				output = output + String.format("%-7.0f|", twoDArray[rLoop][cLoop]);
+				output = output + String.format("   %-7.0f|", twoDArray[rLoop][cLoop]);
 				}else {
-					output = output + String.format("%-7.1f|", twoDArray[rLoop][cLoop]);
-				}
-			}//end second for loop
-			output = output + "\n";
-		}//end first for loop
-		
-		return output;
-	}
-	
-	/*
-	 * Constructs an Integer 2D array adding a "+" to positive values
-	 */
-	/**
-	 * Constructs a String that adds "+" to positive #s before displaying an integer 2D array.
-	 * @param twoDArray Array with values
-	 * @return string with 2D array for output
-	 */
-	public static String constructPrintMod2DArray(int[][] twoDArray) {
-		
-		//initialize output
-		String output = "|";
-		
-		//construct output 
-		for (int rLoop = 0; rLoop < twoDArray.length; rLoop++) {
-			output = output + "|";
-			for (int cLoop = 0; cLoop < twoDArray[rLoop].length; cLoop++){
-				if(twoDArray[rLoop][cLoop] > 0) {
-					output = output + String.format("+%-7d |", twoDArray[rLoop][cLoop]);
-				} else {
-				output = output + String.format("%-7d |", twoDArray[rLoop][cLoop]);
+					output = output + String.format("   %-7.1f|", twoDArray[rLoop][cLoop]);
 				}
 			}//end second for loop
 			output = output + "\n";
@@ -386,7 +398,7 @@ public class MatrixOps {
 		
 		//initialize output
 		String output = "";
-		String isRowOrCol;
+		String isRowOrCol; 
 		int positionNum = 1;
 		
 		if(isRow == true) {
@@ -407,47 +419,6 @@ public class MatrixOps {
 		return output;
 		
 	}//end constructPrintAverage
-	
-	/**
-	 * Construct String to display all the gathered information.
-	 * @param twoDArrayBak a backup integer 2D array that contains values when original array was first created
-	 * @param twoDArrayWithAverages integer 2D array with averages added on the last rows and columns
-	 * @param rowAverages float array with averages of rows
-	 * @param colAverages float array with averages of columns
-	 * @param averageOfAllInArray average of all values in original array before being modified.
-	 * @param rowPos the position of the second largest value in the rows of the original array before being modified
-	 * @param colPos the position of the second largest value in the columns of the original array before being modified
-	 * @param twoDArray the original array that has been modified with -1, 1, and 0s
-	 * @param valCounts integer array that keeps track of how many -1, 1, and 0s are on the original array
-	 * @return string to display all the information of the MatrixApplication
-	 */
-	public static String constructPrintAll(int[][] twoDArrayBak, float[][] twoDArrayWithAverages, float[] rowAverages, float[] colAverages, float averageOfAllInArray, int rowPos, int colPos, int[][] twoDArray, int[] valCounts) {
-		//construct output
-		String output;
-		Boolean isRow = true; //for use with constructPrintAverage()
-		Boolean isCol = false; //for use with constructPrintAverage()
-		//String isRow = "Row"; //used to state if we are constructing output about rows
-		//String isCol = "Column"; //used to state if we are constructing output about rows
-		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
-				+ constructPrint2DArray(twoDArrayBak) +"\n"
-				//+ construct2DArrayFormatted(twoDArrayBak) +"\n"
-				+ "The average of each row and column is:\n"
-				+ constructPrintAverage(rowAverages, isRow) +"\n"
-				+ constructPrintAverage(colAverages, isCol) +"\n"
-				+ String.format("The average of all Values in the 2D array is: %.1f\n\n", averageOfAllInArray)
-				+ "Array with the averages:\n"
-				+ constructPrint2DArray(twoDArrayWithAverages) +"\n"
-				+ "The second largest average of the rows is located in row " +rowPos +"\n"
-				+ "The second largest average of the columns is located in column " +colPos +"\n\n"
-				+ "Modified array with values -1, 1, and 0:\n"
-				+ constructPrintMod2DArray(twoDArray) +"\n"
-				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n"
-				+ constructPrintValueCounts(valCounts);
-		
-		
-		//print output
-		return output;
-	}//end printAll
 	
 }//end class
 

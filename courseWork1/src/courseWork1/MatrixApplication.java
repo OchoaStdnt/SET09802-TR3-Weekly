@@ -1,6 +1,9 @@
 package courseWork1;
 
+import java.awt.Dimension;
 import javax.swing.JOptionPane; //for GUI
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * Main Application for Coursework 1.
@@ -85,12 +88,12 @@ public class MatrixApplication {
 		//-----------------START part 3-----------------
 		
 		//variables
-		int positionOfRowSecondLargest = 0; //row number of value
-		int positionOfColSecondLargest = 0; //column number of value
+		int RowSecondLargestPosition = 0; //row number of value
+		int ColSecondLargestPosition = 0; //column number of value
 		
 		//get the second largest for the row and column
-		positionOfRowSecondLargest = MatrixOps.getSecondLargest(rowAverages) + 1; //adding plus one to indicate actual row #
-		positionOfColSecondLargest = MatrixOps.getSecondLargest(columnAverages) + 1; //adding plus one to indicate actual column #
+		RowSecondLargestPosition = MatrixOps.getSecondLargest(rowAverages) + 1; //adding plus one to indicate actual row #
+		ColSecondLargestPosition = MatrixOps.getSecondLargest(columnAverages) + 1; //adding plus one to indicate actual column #
 		
 		//-----------------START part 4-----------------
 		
@@ -102,25 +105,51 @@ public class MatrixApplication {
 		//array to store count of -1, +1 and 0
 		final int VALUECOUNTARRAY = 3;
 		int[] valueCounts = new int [VALUECOUNTARRAY]; //this will store the counts for -1 , +1 and 0 respectively.
+		String[][] matrixAppMod = new String[nRows][nCols]; //string array to add + sign to positive 1 for display purpose
+		
+		//copy matrixApp array into a String matrixAppMod this is to add + sign to positive numbers
+		MatrixOps.copy2DArrayAndAppendSign(matrixApp, matrixAppMod);
 		
 		//count values of the modified array that contains only -1, 1, and 0 and store in array
 		MatrixOps.getValueCounts (matrixApp, valueCounts);
 		
-		/*     ENABLE ONLY IF THE PRINT OUT OF THE LAST PART IS NEEDED
-		//Construct print out the counts
-		String outputValueCounts = MatrixOps.constructPrintValueCounts(valueCounts);
-		JOptionPane.showMessageDialog(null, outputValueCounts, "Results of Modified Matrix", JOptionPane.INFORMATION_MESSAGE);
-		*/
+		//construct output
+		String output;
+		Boolean isRow = true; //for use with constructPrintAverage()
+		Boolean isCol = false; //for use with constructPrintAverage()
 		
-		//print all the gathered information
-		String printAll = MatrixOps.constructPrintAll(matrixAppBak, matrixAppWithAverages, rowAverages, columnAverages, averageOfAllInArray, positionOfRowSecondLargest, positionOfColSecondLargest, matrixApp, valueCounts);
-		JOptionPane.showMessageDialog(null, printAll, "All gathered information in order", JOptionPane.INFORMATION_MESSAGE);
+		output = "2D array based on the users input number of Rows and Columns with randomly generated numbers\nNOTE: Odd rows have odd numbers only and Even Rows have Even numbers only:\n"
+				+ MatrixOps.constructPrint2DArray(matrixAppBak) +"\n"
+				+ "The average of each row and column are:\n"
+				+ MatrixOps.constructPrintAverage(rowAverages, isRow) +"\n"
+				+ MatrixOps.constructPrintAverage(columnAverages, isCol) +"\n"
+				+ String.format("The average of all Values in the 2D array is: %.1f\n\n", averageOfAllInArray)
+				+ "Array with the averages added to the last row and column for display:\n"
+				+ MatrixOps.constructPrint2DArray(matrixAppWithAverages) +"\n"  //prints float array
+				+ "The second largest average of the rows is located in row " +RowSecondLargestPosition +"\n"
+				+ "The second largest average of the columns is located in column " +ColSecondLargestPosition +"\n\n"
+				+ "Modified array with values -1, 1, and 0:\n"
+				+ MatrixOps.constructPrint2DArray(matrixAppMod) +"\n" //prints String array
+				+ "Number of cells in the matrix containing the values -1, +1 and 0:\n"
+				+ MatrixOps.constructPrintValueCounts(valueCounts);
 		
+		// better format for JOptionPane output display
+		JTextArea textArea = new JTextArea(output); //puts output string in a text area
+		textArea.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12)); //sets font
+		textArea.setEditable(false); //makes the text area read only
+		textArea.setCaretPosition(0); //makes the starting position of the txt area always start at the top
+		JScrollPane scrollPane = new JScrollPane(textArea); //add the scroll to the text area
+		scrollPane.setPreferredSize(new Dimension(1000, 850)); //limit the size of the pane
+		
+		//print output
+		JOptionPane.showMessageDialog(null, scrollPane, "All gathered information in order", JOptionPane.INFORMATION_MESSAGE);
 	}//end main
 
 }//end class
 
 /* 
+ * Coursework 1 tasks
+ * 
  * ----------PART 1------------
  * Create a matrix of integer numbers with N rows and M columns (specified by the user,
  * such that 3 <= N <=10, 3 <= M <= 10) and fill it up by random integers ranging
