@@ -1,3 +1,4 @@
+//Created by Angel Ochoa - MC: 40688673
 package courseWork1;
 
 import java.awt.Dimension;
@@ -19,9 +20,14 @@ import javax.swing.JTextArea;
  * perform several tasks. All tasks completed will be displayed with {@code JOptionPane}
  * to the user.
  * </p>
- * @author Angel Ochoa
+ * @author Angel Ochoa - MC: 40688673
  * @version 1.0 14/07/2025
  */
+
+/*
+ * Detailed information of what each task of the code is at the bottom of this class file
+ */
+
 public class MatrixApplication {
 
 	/**

@@ -1,3 +1,4 @@
+//Created by Angel Ochoa - MC: 40688673
 package courseWork1;
 
 import javax.swing.JOptionPane; //for GUI
@@ -5,7 +6,8 @@ import java.util.Random; //for random number generation
 
 /**
  * Class containing methods for generating arrays, mathematical 
- * calculations, and constructing output data for main MatrixApplication.
+ * calculations, and constructing output data for main class {code MatrixApplication()}.
+ * @author Angel Ochoa - MC: 40688673
  */
 public class MatrixOps {
 
